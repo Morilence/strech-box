@@ -1,0 +1,75 @@
+/* sb */
+[class*="sb-"] {
+    display: flex;
+    
+    position: relative;
+
+    overflow: hidden;
+    user-select: none;
+}
+.sb-row {
+    flex-direction: row;
+}
+.sb-col {
+    flex-direction: column;
+}
+
+/* sb__item */
+[class*="sb-"] > .sb__item {
+    width: 100%;
+    height: 100%;
+}
+.sb-row > .sb__item--resizing {
+    pointer-events: none;
+    cursor: col-resize;
+}
+.sb-col > .sb__item--resizing {
+    pointer-events: none;
+    cursor: row-resize;
+}
+
+/* sb__sash */
+[class*="sb-"] > .sb__sash {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border: none;
+    outline: none;
+    background-color: rgba(128, 145, 160);
+    transition: opacity .3s;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    z-index: 66;
+}
+.sb-row > .sb__sash {
+    width: 5px;
+    height: 100%;
+
+    transform: translateX(-50%);
+
+    cursor: col-resize;
+}
+.sb-col > .sb__sash {
+    width: 100%;
+    height: 5px;
+
+    transform: translateY(-50%);
+
+    cursor: row-resize;
+}
+
+/* sb__sash--dragging */
+[class*="sb-"] > .sb__sash--dragging {
+    opacity: 0.4;
+}
+.sb-row > .sb__sash.sb__sash--dragging {
+    transform: translateX(-50%) scaleX(1.4);
+}
+.sb-col > .sb__sash.sb__sash--dragging {
+    transform: translateY(-50%) scaleY(1.4);
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>strech-box</title>
+        <link rel="stylesheet" href="./src/strechbox.css" />
+        <script src="./src/strechbox.js"></script>
+        <style>
+            html,
+            body {
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+                margin: 0;
+
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            #app {
+                width: 100%;
+                height: 100%;
+            }
+
+            .panel.a {
+                background-color: springgreen;
+            }
+
+            .container.b {
+                background-color: rgb(255, 255, 70);
+            }
+
+            .item.a {
+                background-color: azure;
+            }
+            .item.b {
+                background-color: aqua;
+            }
+            .item.c {
+                background-color: rgb(241, 172, 241);
+            }
+            .item.d {
+                background-color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="panel a"></div>
+            <div class="panel b">
+                <div class="container a">
+                    <div class="item a"></div>
+                    <div class="item b"></div>
+                    <div class="item c"></div>
+                    <div class="item d"></div>
+                </div>
+                <div class="container b"></div>
+            </div>
+        </div>
+        <script>
+            const appBox = new StrechBox(document.querySelector("#app"), {
+                direction: "row",
+                items: [
+                    {
+                        initialProportion: 0.2,
+                        minWidth: 100,
+                    },
+                    {
+                        initialProportion: 0.8,
+                        minWidth: 400,
+                    },
+                ],
+            });
+            const panelABox = new StrechBox(document.querySelector(".panel.b"), {
+                direction: "col",
+                items: [
+                    {
+                        initialProportion: 0.7,
+                        minWidth: 100,
+                    },
+                    {
+                        initialProportion: 0.3,
+                        minWidth: 100,
+                    },
+                ],
+            });
+            const containerABox = new StrechBox(document.querySelector(".container.a"), {
+                direction: "row",
+            });
+
+            appBox.on("resize", function () {
+                containerABox.resize();
+            });
+        </script>
+    </body>
+</html>
