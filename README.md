@@ -21,3 +21,5 @@ const sbox = new StrechBox(document.querySelector("#app"), {
 ```
 
 ## Preview
+
+[https://morilence.github.io/strech-box/](https://morilence.github.io/strech-box/)
